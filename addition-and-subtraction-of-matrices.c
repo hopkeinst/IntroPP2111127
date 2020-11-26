@@ -6,7 +6,7 @@
   The copy of this code is made to later parallelize using openMP as a development of the PPI course of the UIS (Universidad Industrial de Santander)
   Copied by: Jorge Saul Castillo Jaimes - 2111127 - hopkeinst@gmail.com - Student UIS
 
-  No modification is made to the original code!
+  No modification is made to the original code! 
 */
 
 #include<stdio.h>

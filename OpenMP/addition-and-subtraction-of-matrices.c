@@ -2,11 +2,11 @@
   Code copied from: https://www.studytonight.com/c/programs/array/addition-and-subtraction-of-matrices
   Copy date: 2020-11-25
   Purpose of the code: Add and subtract two matrices (two-dimensional array) of size 'm x n' (entered by the user)
-
   The copy of this code is made to later parallelize using openMP as a development of the PPI course of the UIS (Universidad Industrial de Santander)
   Copied by: Jorge Saul Castillo Jaimes - 2111127 - hopkeinst@gmail.com - Student UIS
+  No modification is made to the original code!
 
-  No modification is made to the original code! 
+  File: addition-and-subtraction-of-matrices.c
 */
 
 #include<stdio.h>

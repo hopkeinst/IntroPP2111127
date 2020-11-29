@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# Particion a usarse
+#SBATCH --partition=guane_24_cores
+# Como se llama el proceso/tarea que voy a poner
+#SBATCH --job-name=omp_E1
+# Cantidad de nodos a usar
+#SBATCH --nodes=1
+# Cantidad de tareas a realizar
+#SBATCH --ntasks=1
+# Cantidad de cpus por tarea
+#SBATCH --cpus-per-task=16
+# Archivo de salida, donde se 'escribe' todo lo del programa y lo de este archivo
+#SBATCH --output=output_addition-and-subtraction-of-matrices.txt
+# Archivo con los errores de ejecucion
+#SBATCH --error=error_addition-and-subtraction-of-matrices.err 
+# Que avise cualquier cosa por correo: inicio, termino, error
+#SBATCH --mail-type=ALL
+# Y el correo al cual comunicarse
+#SBATCH --mail-user=jorge.castillo1@correo.uis.edu.co
+
+# Se carga el modulo de GCC para que lo corra con este
+module load devtools/gcc/8.3.0
+
+# Si el compilado ya existe
+if [ -f comp_aasof ]; then
+	# Lo elimina
+    rm -r comp_aasof
+fi
+
+# Usa GCC para compilar el codigo paralelizado
+echo "Compilando omp_addition-and-subtraction-of-matrices.c\n"
+g++ -fopenmp omp_addition-and-subtraction-of-matrices.c -o comp_aasof
+echo "Inicio del codigo de suma y resta de dos matrice\n\n"
+
+# Se consulta si se configuro la cantidad de cpus por tarea
+if [ -n "$SLURM_CPUS_PER_TASK" ]; then
+	# Si se configuro, coloca la cantidad de hilos del OpenMP como la cantidad de cpu por tarea
+  omp_threads=$SLURM_CPUS_PER_TASK
+else
+	# Si no, lo coloca en 1
+  omp_threads=1
+fi
+
+export OMP_NUM_THREADS=$omp_threads
+
+./comp_aasof
+echo "\n\nCompilacion concluida y ejecutada exitosamente"
+
+rm -r comp_aasof

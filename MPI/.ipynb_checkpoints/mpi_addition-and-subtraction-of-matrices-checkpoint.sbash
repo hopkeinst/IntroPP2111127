@@ -1,0 +1,82 @@
+#!/bin/bash
+
+# Particion a usarse
+#SBATCH --partition=normal
+# Como se llama el proceso/tarea que voy a poner
+#SBATCH --job-name=mpi_E2
+# Cantidad de nodos a usar
+#SBATCH --nodes=2
+# Cantidad de cpus por tarea
+#SBATCH --cpus-per-task=4
+# Cantidad de tareas a realizar
+#SBATCH --ntasks=8
+
+# Archivo de salida, donde se 'escribe' todo lo del programa
+#SBATCH --output=outputMPI_addition-and-subtraction-of-matrices.txt
+# Archivo con los errores de ejecucion
+#SBATCH --error=errorMPI_addition-and-subtraction-of-matrices.err 
+# Que avise cualquier cosa por correo: inicio, termino, error
+#SBATCH --mail-type=ALL
+# Y el correo al cual comunicarse
+#SBATCH --mail-user=jorge.castillo1@correo.uis.edu.co
+
+# Se carga el modulo de MPI para que lo corra con este
+module load devtools/mpi/openmpi/3.1.4
+
+# Si el compilado de MPI ya existe
+if [ -f comp_aasom ]; then
+	# Lo elimina
+    rm -r comp_aasom
+fi
+# Se carga el modulo de GCC para que el tipo Serial y el OpenMP lo corra con este
+module load devtools/gcc/8.3.0
+
+# Si el compilado Serial ya existe
+if [ -f comp_aasoserial ]; then
+	# Lo elimina
+    rm -r comp_aasoserial
+fi
+# Si el compilado OpenMP ya existe
+if [ -f comp_aasoMP ]; then
+	# Lo elimina
+    rm -r comp_aasoMP
+fi
+
+# Crear el archivo donde se guardaran los tiempos de ejecucion de cada tipo
+if [ -f tiempos.txt ]; then
+	# Lo elimina
+    rm -r tiempos.txt
+fi
+touch tiempos.txt
+
+# # # SERIAL # # # 
+# Usa GCC para compilar el codigo sin paralelizar, serial
+gcc serial_addition-and-subtraction-of-matrices.c -o comp_aasoserial
+# Y lo ejecuta
+./comp_aasoserial
+# Y luego elimino el compilado
+rm -r comp_aasoserial
+
+
+# # # OPEN MP # # #
+
+# Usa GCC para compilar el codigo paralelizado en OpenMP
+g++ -fopenmp omp_addition-and-subtraction-of-matrices.c -o comp_aasoMP
+
+# Se consulta si se configuro la cantidad de cpus por tarea
+if [ -n "$SLURM_CPUS_PER_TASK" ]; then
+	# Si se configuro, coloca la cantidad de hilos del OpenMP como la cantidad de cpu por tarea
+  omp_threads=$SLURM_CPUS_PER_TASK
+else
+	# Si no, lo coloca en 1
+  omp_threads=1
+fi
+
+export OMP_NUM_THREADS=$omp_threads
+# Corro compilado
+./comp_aasoMP
+# Elimino el compilado
+rm -r comp_aasoMP
+
+
+# # # MPI # # # 

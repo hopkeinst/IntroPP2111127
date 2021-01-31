@@ -7,8 +7,15 @@ Carpeta del desarrollo de la primera evaluación de la asignatura. Esta consiste
 
 Dentro encontrará la información detallada de este 
 
+## [MPI](https://github.com/hopkeinst/IntroPP2111127/tree/main/MPI)
+Carpeta del desarrollo de la segunda evaluación de la asignatura. Esta consiste en realizar una paralelización usando el método de paralización de MPI de un código en C, ponerlo a correr en *Guane* y compararlo frente a otras *(Serial, OpenMP)*.
+
+Presiona en el título para observar detalladamente el código y leer la descripción.
+
 ----
 
 Cualquier duda, comentario, sugerencia, queja o similar pueden escribirme a **hopkeinst@gmail.com**
 
-Gracias, y que tenga un buen día.
+Gracias.
+
+=D

@@ -1,0 +1,3 @@
+SERIAL: 1.287937164306641 milisegundos
+OpenMP: 0.6809234619140625 milisegundos
+MPI (0 task): 356.4581871032715 milisegundos

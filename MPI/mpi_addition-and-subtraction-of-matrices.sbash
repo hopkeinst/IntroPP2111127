@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Particion a usarse
-#SBATCH --partition=normal
+#SBATCH --partition=guane_24_cores
 # Como se llama el proceso/tarea que voy a poner
 #SBATCH --job-name=mpi_E2
 # Cantidad de nodos a usar
@@ -80,3 +80,10 @@ rm -r comp_aasoMP
 
 
 # # # MPI # # # 
+# Genero compilado para MPI
+mpicc mpi_addition-and-subtraction-of-matrices.c -o comp_aasom
+mpirun comp_aasom
+# Elimino el compilado
+rm -r comp_aasom
+
+# Fin

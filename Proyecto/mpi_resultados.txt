@@ -1,0 +1,64 @@
+****************************************************************************
+Informacion sobre el mes de febrero, marzo y abril de 2021 respectivamente :
+****************************************************************************
+       lun mar mie jue vie sab dom
+par     2   2   2   2   2   2   2   
+impar   2   2   2   2   2   2   2   
+
+total dias pares: 14
+total dias impares: 14
+
+****************************************************************************
+       lun mar mie jue vie sab dom
+par     2   3   2   2   2   2   2   
+impar   3   2   3   2   2   2   2   
+
+total dias pares: 15
+total dias impares: 16
+
+****************************************************************************
+       lun mar mie jue vie sab dom
+par     2   2   2   2   3   2   2   
+impar   2   2   2   3   2   2   2   
+
+total dias pares: 15
+total dias impares: 15
+
+****************************************************************************
+las cuentas sobre las cedulas pares son las siguientes: 
+cedulas con 1 digitos: 0
+cedulas con 2 digitos: 0
+cedulas con 3 digitos: 0
+cedulas con 4 digitos: 0
+cedulas con 5 digitos: 1
+cedulas con 6 digitos: 9
+cedulas con 7 digitos: 528
+cedulas con 8 digitos: 6070
+cedulas con 9 digitos: 6
+cedulas con 10 digitos: 15283
+cedulas con 11 digitos: 61
+cedulas con 12 digitos: 1
+cedulas con 13 digitos: 0
+cedulas con 14 digitos: 0
+
+****************************************************************************
+las cuentas sobre las cedulas impares son las siguientes: 
+cedulas con 1 digitos: 0
+cedulas con 2 digitos: 0
+cedulas con 3 digitos: 0
+cedulas con 4 digitos: 0
+cedulas con 5 digitos: 0
+cedulas con 6 digitos: 8
+cedulas con 7 digitos: 554
+cedulas con 8 digitos: 6252
+cedulas con 9 digitos: 3
+cedulas con 10 digitos: 15231
+cedulas con 11 digitos: 59
+cedulas con 12 digitos: 0
+cedulas con 13 digitos: 0
+cedulas con 14 digitos: 0
+
+****************************************************************************
+numero de cedulas pares: 21959
+numero de cedulas impares: 22107
+****************************************************************************
